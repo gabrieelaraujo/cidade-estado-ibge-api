@@ -7,6 +7,17 @@ Basta fazer o download do `CidadeEstado.js` e adicionar no seu projeto.
 
 `` <script type="text/javascript" defer src="CidadeEstado.js" ></script> ``
 
+`` <script type="text/javascript" defer src="CidadeEstado.min.js" ></script> ``  
+
+<br/><br/>
+
+O código utiliza dos selects seguindo do padrão abaixo: 
+
+`` <select name="uf" required></select> ``
+
+`` <select name="city" required></select> ``
+
+
 ## Código 
 ```
 $(function() {
