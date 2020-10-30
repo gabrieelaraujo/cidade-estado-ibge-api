@@ -25,8 +25,19 @@ $(function() {
     //Busca na API do IBGE os estados e adiciona as opções com o ID referente ao seu estado (data-id)
     $.getJSON('https://servicodados.ibge.gov.br/api/v1/localidades/estados/', function (uf) {
         var options = '<option value="" selected disabled>– Selecione seu estado –</option>'; 
-        for (var i = 0; i < uf.length; i++) { 
-            options += '<option data-id="' + uf[i].id + '" value="' + uf[i].nome + '" >' + uf[i].nome + '</option>'; 
+        
+        //Ordem alfabetica dos estados
+        var features = uf.sort((a,b) => {
+            return (
+              (a.nome < b.nome && -1) ||
+              (a.nome > b.nome && 1) ||
+              0
+            ); 
+        });
+
+
+        for (var i = 0; i < features.length; i++) { 
+            options += '<option data-id="' + features[i].id + '" value="' + features[i].nome + '" >' + features[i].nome + '</option>'; 
         }
 
         $("select[name='uf']").html(options);
